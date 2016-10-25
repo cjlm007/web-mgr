@@ -1,6 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {fetchStars} from '../actions/StarsActions';
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
+import {fetchStars} from '../actions/StarsActions'
+import forEach from 'lodash/forEach'
 
 const propTypes = {
   authed: PropTypes.object,
@@ -20,14 +21,19 @@ class Stars extends Component {
   renderStars() {
     const result = [];
     const {stars} = this.props
-    console.log(stars)
-    for (const star of stars) {
+
+    forEach(stars, (value, key) => {
       result.push(
-        <div>
-          this is a star
+        <div key={key}>
+          <p>
+            {value.name}
+            &nbsp;=&nbsp;
+            {key}
+          </p>
         </div>
       )
-    }
+    })
+
     return result;
   }
 

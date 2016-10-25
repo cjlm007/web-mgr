@@ -1,5 +1,5 @@
 import * as types from '../constants/ActionTypes';
-import {arrayOf, normalize} from 'normalizr';
+import {normalize} from 'normalizr';
 import {starsArraySchema} from '../constants/Schemas';
 
 export function fetchStars() {
@@ -9,7 +9,6 @@ export function fetchStars() {
     return fetch('/stars')
       .then(response => response.json()).then(json => {
         const normalized = normalize(json, starsArraySchema);
-        console.log(normalized)
         dispatch(receiveStars(normalized.entities));
       }).catch(err => {
         throw err
