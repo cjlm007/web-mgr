@@ -5,6 +5,7 @@ import {initAuth} from '../actions/AuthActions';
 import {initEnvironment} from '../actions/EnvironmentActions';
 import {initNavigator} from '../actions/NavigatorActions';
 
+import Stars from '../components/Stars';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -25,6 +26,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Stars />
       </div>
     );
   }

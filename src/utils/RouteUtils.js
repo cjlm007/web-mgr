@@ -1,37 +1,37 @@
 export function constructUrl(route) {
-  const {path, query} = route;
-  let result = path.join('/');
-  let queryArr = [];
+  const {path, query} = route
+  let result = path.join('/')
+  let queryArr = []
   if (query && typeof query === 'object') {
     queryArr = Object.keys(query).sort()
       .filter(key => query[key] !== null)
-      .map(key => `${key}=${query[key]}`);
+      .map(key => `${key}=${query[key]}`)
   }
 
   if (queryArr.length > 0) {
-    result += `?${queryArr.join('&')}`;
+    result += `?${queryArr.join('&')}`
   }
 
-  return result;
+  return result
 }
 
 export function parseUrl(windowHash) {
-  const query = {};
-  const hashArr = windowHash.replace('#/', '').split('?');
-  let path = hashArr[0].split('/');
+  const query = {}
+  const hashArr = windowHash.replace('#/', '').split('?')
+  let path = hashArr[0].split('/')
 
   if (hashArr.length > 1) {
     hashArr[1].split('&').forEach(str => {
-      const arr = str.split('=');
-      const key = arr[0];
-      const value = arr[1];
+      const arr = str.split('=')
+      const key = arr[0]
+      const value = arr[1]
       if (isNaN(value)) {
-        query[key] = value;
+        query[key] = value
       } else {
-        query[key] = Number(value);
+        query[key] = Number(value)
       }
-    });
+    })
   }
 
-  return {path, query};
+  return {path, query}
 }
