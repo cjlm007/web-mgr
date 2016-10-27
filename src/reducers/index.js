@@ -1,3 +1,4 @@
+import {routerReducer as routing} from 'react-router-redux'
 import {combineReducers} from 'redux'
 
 import authed from './auth'
@@ -9,7 +10,8 @@ const rootReducer = combineReducers({
   authed,
   entities,
   environment,
-  navigator
+  navigator,
+  routing,
 })
 
 export default rootReducer
