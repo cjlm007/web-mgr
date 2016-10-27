@@ -1,11 +1,8 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-
 import {initAuth} from '../actions/AuthActions';
 import {initEnvironment} from '../actions/EnvironmentActions';
 import {initNavigator} from '../actions/NavigatorActions';
-
-import Stars from '../components/Stars';
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -13,6 +10,9 @@ const propTypes = {
   isMobile: PropTypes.bool,
   path: PropTypes.array.isRequired,
   width: PropTypes.number,
+  inputValue: PropTypes.string.isRequired,
+  // Injected by React Router
+  children: PropTypes.node
 };
 
 class App extends Component {
@@ -23,29 +23,36 @@ class App extends Component {
     dispatch(initNavigator());
   }
 
+
   render() {
+    const {children} = this.props
     return (
       <div>
-        <Stars />
+        {children}
       </div>
-    );
+    )
   }
 }
 
 App.propTypes = propTypes;
 
-function mapStateToProps(state) {
-  const {environment, navigator} = state;
-  const {height, isMobile, width} = environment;
-  const {path} = navigator.route;
+
+function mapStateToProps(state, ownProps) {
+  const {environment, navigator} = state
+  const {height, isMobile, width} = environment
+  const {path} = navigator.route
+  const errorMessage = state.errorMessage
+  const inputValue = ownProps.location.pathname.substring(1)
 
   return {
     height,
     isMobile,
     path,
     width,
-  };
+    errorMessage,
+    inputValue
+  }
 }
 
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(App)
