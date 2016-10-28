@@ -1,17 +1,17 @@
-import {routerReducer as routing} from 'react-router-redux'
+import {routerStateReducer} from 'redux-router';
 import {combineReducers} from 'redux'
 
-import authed from './auth'
+import auth from './auth'
 import entities from '../reducers/entities'
-import environment from '../reducers/environment'
-import navigator from '../reducers/navigator'
+// import environment from '../reducers/environment'
+// import navigator from '../reducers/navigator'
 
 const rootReducer = combineReducers({
-  authed,
+  auth,
   entities,
-  environment,
-  navigator,
-  routing,
+  // environment,
+  // navigator,
+  router: routerStateReducer,
 })
 
 export default rootReducer

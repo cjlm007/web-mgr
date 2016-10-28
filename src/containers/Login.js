@@ -2,12 +2,18 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 
 const propTypes = {
-  authed: PropTypes.object,
+  auth: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
 }
 
 class Login extends Component {
+  constructor(props) {
+    super(props)
+    console.log('constructor')
+  }
+
   componentWillMount() {
+    console.log('componentWillMount')
   }
 
   componentWillReceiveProps(nextProps) {
@@ -25,13 +31,13 @@ class Login extends Component {
 Login.propTypes = propTypes
 
 function mapStateToProps(state) {
-  const {authed, environment} = state
-  const {height, isMobile} = environment
+  const {auth} = state
+  // const {height, isMobile} = environment
 
   return {
-    authed,
-    height,
-    isMobile,
+    auth,
+    // height,
+    // isMobile,
   }
 }
 

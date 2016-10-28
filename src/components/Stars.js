@@ -4,7 +4,7 @@ import {fetchStars} from '../actions/StarsActions'
 import forEach from 'lodash/forEach'
 
 const propTypes = {
-  authed: PropTypes.object,
+  auth: PropTypes.object,
   dispatch: PropTypes.func.isRequired,
   stars: PropTypes.object.isRequired,
 }
@@ -49,12 +49,12 @@ class Stars extends Component {
 Stars.propTypes = propTypes
 
 function mapStateToProps(state) {
-  const {authed, entities, environment} = state
+  const {auth, entities, environment} = state
   const {height, isMobile} = environment
   const {stars, users} = entities
 
   return {
-    authed,
+    auth,
     height,
     isMobile,
     stars,

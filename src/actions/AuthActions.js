@@ -1,7 +1,7 @@
 import {checkHttpStatus, parseJSON} from '../utils'
 import {types} from '../constants/ActionTypes'
-import {pushState} from 'redux-router'
-import jwtDecode from 'jwt-decode'
+import {push} from 'redux-router'
+// import jwtDecode from 'jwt-decode'
 
 
 export function loginUserSuccess(token) {
@@ -41,7 +41,7 @@ export function logout() {
 export function logoutAndRedirect() {
   return (dispatch, state) => {
     dispatch(logout())
-    dispatch(pushState(null, '/login'))
+    dispatch(push('/login'))
   }
 }
 
@@ -61,9 +61,9 @@ export function loginUser(email, password, redirect = "/") {
       .then(parseJSON)
       .then(response => {
         try {
-          let decoded = jwtDecode(response.token)
+          // let decoded = jwtDecode(response.token)
           dispatch(loginUserSuccess(response.token))
-          dispatch(pushState(null, redirect))
+          dispatch(push(redirect))
         } catch (e) {
           dispatch(loginUserFailure({
             response: {
