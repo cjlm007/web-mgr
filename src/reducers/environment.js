@@ -1,4 +1,5 @@
-import * as types from '../constants/ActionTypes'
+import {createReducer} from '../utils'
+import {types} from '../constants/ActionTypes'
 
 const initialState = {
   isMobile: false,
@@ -6,20 +7,16 @@ const initialState = {
   width: null,
 }
 
-export default function environment(state = initialState, action) {
-  switch (action.type) {
-    case types.CHANGE_IS_MOBILE:
-      return Object.assign({}, state, {
-        isMobile: action.isMobile,
-      })
-
-    case types.CHANGE_WIDTH_AND_HEIGHT:
-      return Object.assign({}, state, {
-        height: action.height,
-        width: action.width,
-      })
-
-    default:
-      return state
+export default createReducer(initialState, {
+  [types.CHANGE_IS_MOBILE]: (state, payload) => {
+    return Object.assign({}, state, {
+      isMobile: payload.isMobile,
+    })
+  },
+  [types.CHANGE_WIDTH_AND_HEIGHT]: (state, payload) => {
+    return Object.assign({}, state, {
+      height: payload.height,
+      width: payload.width,
+    })
   }
-}
+})

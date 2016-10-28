@@ -1,6 +1,6 @@
-import * as types from '../constants/ActionTypes';
-import {normalize} from 'normalizr';
-import {starsArraySchema} from '../constants/Schemas';
+import {types} from '../constants/ActionTypes'
+import {normalize} from 'normalizr'
+import {starsArraySchema} from '../constants/Schemas'
 
 export function fetchStars() {
   return dispatch => {

@@ -1,17 +1,21 @@
-import * as types from '../constants/ActionTypes'
+import {types} from '../constants/ActionTypes'
 
 function changeIsMobile(isMobile) {
   return {
     type: types.CHANGE_IS_MOBILE,
-    isMobile
+    payload: {
+      isMobile
+    }
   }
 }
 
 export function changeWidthAndHeight(height, width) {
   return {
     type: types.CHANGE_WIDTH_AND_HEIGHT,
-    height,
-    width
+    payload: {
+      height,
+      width
+    }
   }
 }
 

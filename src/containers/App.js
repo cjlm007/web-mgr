@@ -1,8 +1,7 @@
-import React, {Component, PropTypes} from 'react';
-import {connect} from 'react-redux';
-import {initAuth} from '../actions/AuthActions';
-import {initEnvironment} from '../actions/EnvironmentActions';
-import {initNavigator} from '../actions/NavigatorActions';
+import React, {Component, PropTypes} from 'react'
+import {connect} from 'react-redux'
+import {initEnvironment} from '../actions/EnvironmentActions'
+import {initNavigator} from '../actions/NavigatorActions'
 
 const propTypes = {
   dispatch: PropTypes.func.isRequired,
@@ -13,14 +12,13 @@ const propTypes = {
   inputValue: PropTypes.string.isRequired,
   // Injected by React Router
   children: PropTypes.node
-};
+}
 
 class App extends Component {
   componentDidMount() {
-    const {dispatch} = this.props;
-    dispatch(initAuth());
-    dispatch(initEnvironment());
-    dispatch(initNavigator());
+    const {dispatch} = this.props
+    dispatch(initEnvironment())
+    dispatch(initNavigator())
   }
 
 
@@ -34,7 +32,7 @@ class App extends Component {
   }
 }
 
-App.propTypes = propTypes;
+App.propTypes = propTypes
 
 
 function mapStateToProps(state, ownProps) {

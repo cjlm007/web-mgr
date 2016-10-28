@@ -1,10 +1,12 @@
-import * as types from '../constants/ActionTypes'
+import {types} from '../constants/ActionTypes'
 import { constructUrl, parseUrl } from '../utils/RouteUtils'
 
 export function changePath(route) {
   return {
     type: types.CHANGE_PATH,
-    route,
+    payload: {
+      route,
+    }
   }
 }
 
