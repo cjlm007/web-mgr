@@ -45,7 +45,7 @@ export function logoutAndRedirect() {
   }
 }
 
-export function loginUser(email, password, redirect = "/") {
+export function loginUser(username, password, redirect = '/') {
   return function (dispatch) {
     dispatch(loginUserRequest())
     return fetch('/auth/get_token', {
@@ -55,7 +55,7 @@ export function loginUser(email, password, redirect = "/") {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({email: email, password: password})
+      body: JSON.stringify({username: username, password: password})
     })
       .then(checkHttpStatus)
       .then(parseJSON)

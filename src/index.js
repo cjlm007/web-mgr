@@ -2,7 +2,7 @@ import React from 'react'
 import {render} from 'react-dom'
 import Root from './containers/Root'
 import configureStore from './store/configureStore'
-import {loginUserSuccess} from "./actions/AuthActions";
+import {loginUserSuccess} from './actions/AuthActions';
 
 const store = configureStore(window.__INITIAL_STATE__)
 

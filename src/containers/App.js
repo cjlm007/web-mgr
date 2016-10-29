@@ -21,7 +21,6 @@ class App extends Component {
     // dispatch(initNavigator())
   }
 
-
   render() {
     return (
       <div>
